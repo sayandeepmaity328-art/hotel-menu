@@ -1,4 +1,4 @@
-/* General Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,21 +6,19 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Base */
 body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
-/* ========== LOVE THEME BACKGROUND ========== */
+/* ===== LOVE THEME BACKGROUND ===== */
 .love-theme {
-  background: linear-gradient(135deg, #ffe6eb, #ffd1dc, #ffc1cc);
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   animation: bgShift 10s ease-in-out infinite alternate;
-  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 @keyframes bgShift {
@@ -28,62 +26,92 @@ body {
   to { background-position: right; }
 }
 
-/* Floating Hearts */
-.hearts::before,
-.hearts::after {
-  content: '';
+/* ===== FLOATING HEARTS ===== */
+.hearts {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  top: 0; left: 0;
-  background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.4) 2px, transparent 3px),
-                    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.5) 2px, transparent 3px),
-                    radial-gradient(circle at 70% 40%, rgba(255,255,255,0.4) 2px, transparent 3px),
-                    radial-gradient(circle at 90% 90%, rgba(255,255,255,0.6) 3px, transparent 3px);
-  background-size: 200px 200px;
-  animation: floatHearts 15s linear infinite;
+  overflow: hidden;
   z-index: 0;
-  opacity: 0.6;
 }
 
-@keyframes floatHearts {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100vh); }
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4b81;
+  transform: rotate(45deg);
+  animation: floatUp 10s infinite ease-in;
+  opacity: 0.7;
 }
 
-/* Optional additional floating heart elements */
-.hearts::after {
-  animation-delay: 5s;
-  opacity: 0.3;
+/* Create the heart shape using pseudo-elements */
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4b81;
+  border-radius: 50%;
 }
 
-/* Container Content */
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+/* Floating animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Random positions and delays */
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 6s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+/* ===== CONTENT ===== */
 .container {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(6px);
+  padding: 2rem 3rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(255, 0, 80, 0.2);
+  box-shadow: 0 8px 25px rgba(255, 0, 100, 0.3);
 }
 
-/* Title + Text */
 .hotel-name {
   font-size: 3rem;
-  color: #c2185b;
+  color: #b71c50;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+  text-shadow: 0 0 10px rgba(255, 100, 150, 0.3);
 }
 
 .tagline {
-  color: #a12d5c;
+  color: #8b0038;
   margin-bottom: 2rem;
   font-style: italic;
 }
 
-/* Button */
 .btn {
   background-color: #e91e63;
   color: #fff;
@@ -94,17 +122,16 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
 }
-
 .btn:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(233, 30, 99, 0.6);
 }
 
-/* ================= MENU PAGE STYLES (same as before) ================= */
-
+/* ===== MENU PAGE ===== */
 .menu-page {
   background: linear-gradient(135deg, #fff0f5, #ffe4e1);
   color: #333;
+  min-height: 100vh;
 }
 
 header {
