@@ -57,10 +57,19 @@
   </footer>
 
   <!-- 🎵 Romantic Piano Background Music -->
-  <audio autoplay loop>
-    <source src="Lights.mp3" type="audio" />
+<audio id="bg-music" loop>
+    <source src="Lights.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
+
+  <script>
+    document.addEventListener("click", function playMusic() {
+      const audio = document.getElementById("bg-music");
+      audio.play();
+      // remove listener so it only triggers once
+      document.removeEventListener("click", playMusic);
+    });
+  </script>
 
 </body>
 </html>
