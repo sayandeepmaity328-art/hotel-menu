@@ -16,6 +16,11 @@
     <div class="firework"></div>
   </div>
 
+  <div id="start-overlay">
+    <button id="start-btn">💖 Click to Begin 💖</button>
+  </div>
+
+
   <header>
     <h1 class="menu-title">💖 The Grand Dine Menu 💖</h1>
     <a href="index.html" class="back-btn">← Back to Home</a>
@@ -57,17 +62,38 @@
   </footer>
 
   <!-- 🎵 Romantic Piano Background Music -->
-<audio id="bg-music" loop>
+<!-- 🎵 Romantic Piano Background Music -->
+  <audio id="bg-music" loop>
     <source src="Lights.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
   <script>
-    document.addEventListener("click", function playMusic() {
-      const audio = document.getElementById("bg-music");
-      audio.play();
-      // remove listener so it only triggers once
-      document.removeEventListener("click", playMusic);
+    const startBtn = document.getElementById("start-btn");
+    const overlay = document.getElementById("start-overlay");
+    const music = document.getElementById("bg-music");
+
+    startBtn.addEventListener("click", () => {
+      // Try playing music
+      music.volume = 0;
+      music.play().then(() => {
+        // Smooth fade-in of audio
+        let vol = 0;
+        const fade = setInterval(() => {
+          if (vol < 1) {
+            vol += 0.02;
+            music.volume = vol;
+          } else {
+            clearInterval(fade);
+          }
+        }, 100);
+
+        // Fade out the overlay visually
+        overlay.classList.add("fade-out");
+        setTimeout(() => overlay.remove(), 1200);
+      }).catch((err) => {
+        console.log("Autoplay blocked:", err);
+      });
     });
   </script>
 
