@@ -10,7 +10,197 @@ body {
   overflow: hidden;
 }
 
-/* ===== LOVE THEME BACKGROUND ===== */
+/* ===== LOVE THEME BACKGROUND ====/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== LOVE THEME PAGE ===== */
+.love-theme {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  animation: bgShift 10s ease-in-out infinite alternate;
+  position: relative;
+}
+
+@keyframes bgShift {
+  from { background-position: left; }
+  to { background-position: right; }
+}
+
+/* ===== FLOATING HEARTS ===== */
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4b81;
+  transform: rotate(45deg);
+  animation: floatUp 10s linear infinite;
+  opacity: 0.7;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4b81;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+/* Floating upward */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Random heart placement and timing */
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 6s; }
+.heart:nth-child(5) { left: 85%; animation-delay: 8s; }
+.heart:nth-child(6) { left: 95%; animation-delay: 3s; }
+
+/* ===== CONTENT BOX ===== */
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 3rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(255, 0, 100, 0.3);
+  animation: fadeIn 2s ease;
+}
+
+/* Text styles */
+.hotel-name {
+  font-size: 3rem;
+  color: #b71c50;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 100, 150, 0.3);
+}
+
+.tagline {
+  color: #8b0038;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+/* Button */
+.btn {
+  background-color: #e91e63;
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(233, 30, 99, 0.6);
+}
+
+/* Fade-in animation for text */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== MENU PAGE ===== */
+.menu-page {
+  background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+  color: #333;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  color: #c2185b;
+  font-weight: bold;
+}
+
+.menu-list {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.menu-list h2 {
+  color: #c2185b;
+  border-bottom: 2px solid #c2185b;
+  padding-bottom: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.menu-list ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.menu-list li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+= */
 .love-theme {
   background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   animation: bgShift 10s ease-in-out infinite alternate;
@@ -179,3 +369,146 @@ footer {
   font-size: 0.9rem;
   color: #666;
 }
+
+/* ===== LOVE THEME MENU PAGE ===== */
+.menu-page {
+  background: radial-gradient(circle at bottom, #ffd1dc 0%, #fff0f5 60%, #ffe4e1 100%);
+  min-height: 100vh;
+  color: #4a0033;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Menu Title */
+.menu-title {
+  font-size: 2.5rem;
+  color: #c2185b;
+  margin-top: 2rem;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+  animation: fadeInDown 1.5s ease;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Menu Box Styling */
+.menu-list {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(255, 0, 100, 0.3);
+  z-index: 2;
+  position: relative;
+  animation: fadeIn 2s ease;
+}
+
+.menu-list h2 {
+  color: #b71c50;
+  border-bottom: 2px solid #b71c50;
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding-bottom: 3px;
+}
+
+.menu-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #ffb6c1;
+}
+
+/* ===== Fireworks (Crackers) ===== */
+.fireworks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.firework {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 80px;
+  background: linear-gradient(to top, #ff4081, transparent);
+  animation: shootUp 3s infinite ease-out;
+}
+
+.firework::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px 2px rgba(255,105,180,0.7),
+    0 0 20px 6px rgba(255,192,203,0.5),
+    0 0 30px 10px rgba(255,182,193,0.3);
+  opacity: 0;
+  animation: explode 3s infinite ease-out;
+}
+
+/* Firework movement + explosion */
+@keyframes shootUp {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(-80vh); opacity: 1; }
+  100% { transform: translateY(-80vh); opacity: 0; }
+}
+
+@keyframes explode {
+  0%, 60% { opacity: 0; transform: scale(0.5); }
+  70% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+/* Random positions for fireworks */
+.firework:nth-child(1) { left: 15%; animation-delay: 0s; }
+.firework:nth-child(2) { left: 45%; animation-delay: 1s; }
+.firework:nth-child(3) { left: 70%; animation-delay: 2s; }
+.firework:nth-child(4) { left: 85%; animation-delay: 1.5s; }
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 2rem;
+  color: #8b0038;
+  font-size: 0.9rem;
+}
+
+/* Fade-in animation reused */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Base */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
