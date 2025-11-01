@@ -6,45 +6,107 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Base */
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  color: #333;
+  overflow: hidden;
 }
 
-/* Home Page */
-.home .container {
+/* ========== LOVE THEME BACKGROUND ========== */
+.love-theme {
+  background: linear-gradient(135deg, #ffe6eb, #ffd1dc, #ffc1cc);
+  animation: bgShift 10s ease-in-out infinite alternate;
+  position: relative;
+}
+
+@keyframes bgShift {
+  from { background-position: left; }
+  to { background-position: right; }
+}
+
+/* Floating Hearts */
+.hearts::before,
+.hearts::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.4) 2px, transparent 3px),
+                    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.5) 2px, transparent 3px),
+                    radial-gradient(circle at 70% 40%, rgba(255,255,255,0.4) 2px, transparent 3px),
+                    radial-gradient(circle at 90% 90%, rgba(255,255,255,0.6) 3px, transparent 3px);
+  background-size: 200px 200px;
+  animation: floatHearts 15s linear infinite;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+@keyframes floatHearts {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); }
+}
+
+/* Optional additional floating heart elements */
+.hearts::after {
+  animation-delay: 5s;
+  opacity: 0.3;
+}
+
+/* Container Content */
+.container {
+  position: relative;
+  z-index: 2;
   text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(255, 0, 80, 0.2);
 }
 
+/* Title + Text */
 .hotel-name {
   font-size: 3rem;
-  color: #2c3e50;
+  color: #c2185b;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
 }
 
 .tagline {
-  color: #555;
+  color: #a12d5c;
   margin-bottom: 2rem;
+  font-style: italic;
 }
 
+/* Button */
 .btn {
-  background-color: #2c3e50;
+  background-color: #e91e63;
   color: #fff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px;
   text-decoration: none;
-  transition: background 0.3s;
-}
-.btn:hover {
-  background-color: #34495e;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
 }
 
-/* Menu Page */
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(233, 30, 99, 0.6);
+}
+
+/* ================= MENU PAGE STYLES (same as before) ================= */
+
+.menu-page {
+  background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+  color: #333;
+}
+
 header {
   text-align: center;
   margin-top: 2rem;
@@ -54,7 +116,7 @@ header {
   display: inline-block;
   margin-top: 0.5rem;
   text-decoration: none;
-  color: #2c3e50;
+  color: #c2185b;
   font-weight: bold;
 }
 
@@ -68,8 +130,8 @@ header {
 }
 
 .menu-list h2 {
-  color: #2c3e50;
-  border-bottom: 2px solid #2c3e50;
+  color: #c2185b;
+  border-bottom: 2px solid #c2185b;
   padding-bottom: 5px;
   margin-bottom: 0.5rem;
 }
